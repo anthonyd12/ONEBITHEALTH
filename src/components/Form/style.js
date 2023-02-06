@@ -5,23 +5,21 @@ const styles = StyleSheet.create({
         width:'100%',
         height:'100%',
         justifyContent: 'space-around',
-        bottom:0,
         backgroundColor:'#fff',
         alignItems:'center',
         borderTopLeftRadius:30,
         borderTopRightRadius:30,
-        paddingTop: 15,
-        marginTop:20,
+        paddingTop: 30,
     },
     form:{
         width:'100%',
-        height:'auto',
+        height:'100%',
         marginTop:30,
         padding:10,
     },
     formLabel:{
         color:'black',
-        fontSize:18,
+        fontSize:28,
         paddingLeft:20,
     },
     input:{
@@ -37,10 +35,10 @@ const styles = StyleSheet.create({
         alignItems:'center',
         justifyContent:'center',
         width:'90%',
-        backgroundColor:'#ff0043',
+        backgroundColor:'#6A16F0',
         paddingTop:14,
         paddingBottom:14,
-        marginLeft:12,
+        marginLeft:15,
         marginTop:30,
     },
     textButtonCalcule:{
@@ -52,6 +50,10 @@ const styles = StyleSheet.create({
         color:'red',
         fontWeight:'bold',
         paddingLeft:20,
+    },
+    exhibitionResultImc:{
+        width:'100%',
+        height:'50%',
     }
 
 });

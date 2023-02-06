@@ -12,7 +12,7 @@ import styles from "./style"
 
 export default function Form(){
 
-  const [altura, setAltura] = useState(null)
+  const [height, setHeight] = useState(null)
   const [peso,setPeso] = useState(null)
   const [msgImc,setMsgImc] = useState("Preencha os espaços vazios")
   const [imc,setImc] = useState(null)
@@ -20,7 +20,8 @@ export default function Form(){
   const [errorMsg,setErrorMsg]=useState(null)
 
   function calcularImc(){
-    return setImc((peso/(altura*altura)).toFixed(2))
+    let heightFormat = height.replace(",",".")
+    return setImc((peso/(heightFormat*heightFormat)).toFixed(2))
   }
 
   function verificarImc(){
@@ -31,31 +32,31 @@ export default function Form(){
   }
 
   function validar(){
-    if(altura != null && peso != null){
+    if(height != null && peso != null){
       calcularImc()
-      setAltura(null)
+      setHeight(null)
       setPeso(null)
       setMsgImc("Seu IMC é: ")
       setTextoBotao("Calcule de novo")
       setErrorMsg(null)
-
-      return
-    }
+    }else{
     verificarImc()
     setImc(null)
     setTextoBotao("Calcule")
     setMsgImc("Preencha os espaços vazios")
+    }
   }
 
     return(
       <View style={styles.formContext}>
-        <View style={styles.form} >
+        {imc == null ? 
+        <Pressable onPress={Keyboard.dismiss}  style={styles.form} >
             <Text style={styles.formLabel}>Altura</Text>
             <Text style={styles.errorMsg}>{errorMsg}</Text>
             <TextInput 
             style={styles.input}
-            onChangeText={setAltura}
-            value={altura}
+            onChangeText={setHeight}
+            value={height}
             placeholder="Ex. 1.75"
             keyboardType="numeric"
             />
@@ -78,9 +79,17 @@ export default function Form(){
                 style={styles.textButtonCalcule}>{textoBotao}
                 </Text>
               </TouchableOpacity>
-            
-        </View>
+        </Pressable>  
+        : 
+        <View style={styles.exhibitionResultImc}>
         <ResultImc messageResultImc={msgImc} resultImc={imc}/>
+        <TouchableOpacity
+            style={styles.buttonCalcular}
+            onPress={() => {validar()}}>
+                <Text style={styles.textButtonCalcule}>{textoBotao}</Text>
+              </TouchableOpacity>
+        </View>
+        }
       </View>  
     );
 }

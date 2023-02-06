@@ -11,12 +11,12 @@ const styles = StyleSheet.create({
     },
     numberImc:{
         fontSize:48,
-        color:'#ff0043',
+        color:'#6A16F0',
         fontWeight:'bold'
     },
     information:{
         fontSize:18,
-        color:'#ff0043',
+        color:'#6A16F0',
         fontWeight:'bold',
     },
     boxShareButton:{
